@@ -7,17 +7,16 @@ export default function DayList(props) {
   
   const days = props.days.map(day => {
     return (
-      <ul>
       <DayListItem
-        key = {day.id}
-        name={day.name} 
+        name={day.name}
+        key={day.id}
         spots={day.spots} 
         selected={day.name === props.day}
         setDay={props.setDay}  
       />
-      </ul>
     );
-    
+    //index.js:1437 Warning: Each child in a list should have a unique "key" prop. See https://fb.me/react-warning-keys for more information.
+    //in DayList (at Application.js:114)
   });
   return days;
 }
