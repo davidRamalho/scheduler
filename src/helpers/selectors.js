@@ -58,6 +58,20 @@ export function getAppointmentsForDay(state, day) {
   return filter;
 }
 
+export function getInterviewersForDay(state, day) {
+  if (state.days.length === 0){
+    return [];
+  } 
+  const filteredDay = state.days.filter(a => a.name === day);
+  if (filteredDay.length === 0) {
+    return [];
+  }
+    let corrAppArr = (filteredDay[0]).interviewers;
+    let filter = corrAppArr.map(x => state.interviewers[x]);
+    
+  return filter;
+}
+
 export function getInterview(state, interview) {
   if (interview === null) {
     return null;
