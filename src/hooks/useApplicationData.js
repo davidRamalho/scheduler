@@ -14,7 +14,6 @@ export default function useApplicationData() {
   
   function changeSpots(days, day, change) {
     const selectedDay = days.filter((x) => x.name === day)[0];
-    console.log(selectedDay)
     if (change === 'minus') {
       selectedDay.spots -= 1
     } 
@@ -38,6 +37,22 @@ export default function useApplicationData() {
     return axios.put(`/api/appointments/${id}`, {interview})
       .then(() => (setState({ ...state, appointments })));
   } 
+
+  function editInterview(id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    changeSpots(state.days, state.day, null);
+
+    return axios.put(`/api/appointments/${id}`, {interview})
+      .then(() => (setState({ ...state, appointments })));
+  }
 
   const cancelInterview = function(id) {
     const appointment = {
@@ -65,6 +80,6 @@ export default function useApplicationData() {
     })
   }, []);
 
-  return {state, setDay, bookInterview, cancelInterview}
+  return {state, setDay, bookInterview, cancelInterview, editInterview}
   
 }
