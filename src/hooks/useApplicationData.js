@@ -5,7 +5,7 @@ import "components/Application.scss";
 
 export default function useApplicationData() {
   const [state, setState] = useState({
-    day: "Tuesday",
+    day: "Monday",
     days: [],
     appointments: {}
   });

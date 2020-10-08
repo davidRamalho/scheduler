@@ -61,7 +61,7 @@ export default function Appointment(props) {
   }
 
   return (
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
       <Header id={props.id} className="appointment:last-of-type" time={props.time}/>  
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === CONFIRM && <Confirm message="Are you sure you want to cancel that interview?" 
@@ -74,8 +74,8 @@ export default function Appointment(props) {
       onEdit={() => requestEdit()}
         />
       )}
-      {mode === SAVING && <Status message="Saving - Please Wait our Server Sucks"/>}
-      {mode === DELETING && <Status message="Deleting- Please Wait our Server Sucks"/>}
+      {mode === SAVING && <Status message="Saving"/>}
+      {mode === DELETING && <Status message="Deleting"/>}
       {mode === ERROR_SAVE && <Error message="There was an Error when Saving :(" onClose={() => back()} />}
       {mode === ERROR_DELETE && <Error message="There was an Error when Deleting :(" onClose={() => back()} />}
       {mode === CREATE && 
