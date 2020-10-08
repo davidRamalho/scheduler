@@ -1,4 +1,5 @@
 # Interview Scheduler
+This is a simple React project used which was used to learn React, Storybook, and testing with Jest and Cypress.
 
 ## Setup
 
